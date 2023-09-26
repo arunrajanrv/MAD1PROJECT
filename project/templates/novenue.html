@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No venue created</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/venuecreate.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="top">
+        <div class="header">
+            <h1>Ticket Booking🎫</h1>
+        </div>
+        <div class="topbar">
+            <h4 style="color: white; margin-left: 10px;">Admin Dashboard</h3>
+            <div id="topright">
+                <div><a class="nav-link" href="/summary/{{id}}" style="color: white;">Summary</a> </div>
+                <div><a class="nav-link" href="/admin" style="color: white;">Logout</a></div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <h1>No shows or venues created!</h1>
+        <div class="container">
+            <a id='plus' href='/admin/venue/create/{{id}}' style="font-size: 50px;">+</a>
+        </div>
+    </div>
+    <div class="footer" style="position: absolute;">
+        <h4 style="color: white;">Contact Us</h4>
+        <p style="color: white;">For support, please email: <span style="color: rgb(0, 162, 255);">ticketbooking@yahoo.com</span></p>
+        <p style="color: white;">&copy; 2023 TicketBooking App. All rights reserved.</p>
+    </div>
+</body>
+</html>

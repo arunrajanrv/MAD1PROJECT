@@ -1,0 +1,1436 @@
+openapi: 3.0.0
+info:
+  title: Ticket Booking APP Project
+  description: >
+    <div><h4>The TicketBooking project aims to provide users with a convenient and efficient way to book tickets for shows at various venues. The system consists of several tables, including the Admin, Venue, Show, VenueCreated, ShowCreated, User, ShowBooked, and Rate tables.</h4>
+    </div>
+
+    <h3> Admin Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>admin_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>admin_name</td>
+        <td>String</td>
+        <td>Unique, Not Null</td>
+      </tr>
+      <tr>
+        <td>mobile</td>
+        <td>String</td>
+        <td>Unique, Not Null</td>
+      </tr>      
+      <tr>
+        <td>password</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>         
+    </tbody>
+    </table>
+
+    <h3> Venue Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>venue_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>venue_name</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>place</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>location</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>Screen</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>
+    </tbody>
+    </table>
+
+
+    <h3> VenueCreated Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>vc_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>cadmin_id</td>
+        <td>Integer</td>
+        <td>Foreign Key (admin.admin_id), Not Null</td>
+      </tr>
+      <tr>
+        <td>cvenue_id</td>
+        <td>Integer</td>
+        <td>Foreign Key (venue.venue_id), Not Null</td>
+    </tbody>
+    </table>
+    
+    <h3> ShowTable Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>show_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>show_name</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>rating</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>timing</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>tags</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>screenNumber</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>seats</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>price</td>
+        <td>Integer</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>amount_recieved</td>
+        <td>Integer</td>
+        <td></td>
+      </tr>
+    </tbody>
+    </table>
+    
+    <h3> ShowCreated Table Schema </h3> 
+      <table>
+          <thead>
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Constraints</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>sc_id</td>
+            <td>Integer</td>
+            <td>Primary Key, Auto Increment</td>
+          </tr>
+          <tr>
+            <td>cshow_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (show.show_id), Not Null</td>
+          </tr>
+          <tr>
+            <td>cvenue_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (venue.venue_id), Not Null</td>
+        </tbody>
+      </table>
+      
+      <h3> User Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>user_name</td>
+        <td>String</td>
+        <td>Unique, Not Null</td>
+      </tr>
+      <tr>
+        <td>mobile</td>
+        <td>String</td>
+        <td>Unique, Not Null</td>
+      </tr>
+      <tr>
+        <td>city</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>password</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>         
+    </tbody>
+    </table>
+    
+    <h3> Showbooked Table Schema </h3> 
+      <table>
+          <thead>
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Constraints</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>sb_id</td>
+            <td>Integer</td>
+            <td>Primary Key, Auto Increment</td>
+          </tr>
+          <tr>
+            <td>seats_booked</td>
+            <td>Integer</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>showname</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>showtime</td>
+            <td>datetime</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>venuename</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>venueplace</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>venuelocation</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>Total_price</td>
+            <td>Integer</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>bshow_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (show.show_id), Not Null</td>
+          </tr>
+          <tr>
+            <td>buser_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (user.id), Not Null</td>
+        </tbody>
+      </table>   
+        
+      <h3> Rate Table Schema </h3> 
+      <table>
+          <thead>
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Constraints</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>r_id</td>
+            <td>Integer</td>
+            <td>Primary Key, Auto Increment</td>
+          </tr>
+          <tr>
+            <td>rating</td>
+            <td>Integer</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>review</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>show_name</td>
+            <td>String</td>
+            <td>Not Null</td>
+          </tr>
+          <tr>
+            <td>rshow_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (show.show_id), Not Null</td>
+          </tr>
+          <tr>
+            <td>ruser_id</td>
+            <td>Integer</td>
+            <td>Foreign Key (user.id), Not Null</td>
+        </tbody>
+      </table> 
+        
+        
+    <h3> Error Codes </h3> 
+    <table>
+      <thead>
+        <th>Resource</th>
+        <th>Error Code</th>
+        <th>Message</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Admin</td>
+        <td>ADMIN001</td>
+        <td>admin Name is required</td>
+      </tr>
+      <tr>
+        <td>Admin</td>
+        <td>ADMIN002</td>
+        <td>Mobile Number is required</td>
+      </tr>
+      <tr>
+        <td>Admin</td>
+        <td>ADMIN003</td>
+        <td>password is required</td>
+      </tr>
+      <tr>
+        <td>Admin</td>
+        <td>ADMIN004</td>
+        <td>admin already exist</td>
+      </tr>
+      <tr>
+        <td>Venue</td>
+        <td>VENUE001</td>
+        <td>Venue Name is required</td>
+      </tr>
+      <tr>
+        <td>Venue</td>
+        <td>VENUE002</td>
+        <td>place is required</td>
+      </tr>
+      <tr>
+        <td>Venue</td>
+        <td>VENUE003</td>
+        <td>location is required</td>
+      </tr>
+      <tr>
+        <td>Venue</td>
+        <td>VENUE004</td>
+        <td>Number of screens is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW001</td>
+        <td>Show Name is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW002</td>
+        <td>rating is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW003</td>
+        <td>timing is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW004</td>
+        <td>screen number is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW005</td>
+        <td>seats is required</td>
+      </tr>
+      <tr>
+        <td>Show</td>
+        <td>SHOW006</td>
+        <td>price is required</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>USER001</td>
+        <td>User Name is required</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>USER002</td>
+        <td>Mobile Number is required</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>USER003</td>
+        <td>password is required</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>USER004</td>
+        <td>user already exist</td>
+      </tr>
+      <tr>
+      <tr>
+        <td>ShowBooked</td>
+        <td>SHOWBOOKED001</td>
+        <td>Number of seats is required</td>
+      </tr>
+      <tr>
+        <td>ShowBooked</td>
+        <td>SHOWBOOKED002</td>
+        <td>That many seats are not available</td>
+      </tr>
+      <tr>
+        <td>Rate</td>
+        <td>RATE001</td>
+        <td>Rating is required</td>
+      </tr>
+      <tr>
+        <td>Rate</td>
+        <td>RATE002</td>
+        <td>Review is required</td>
+      </tr>
+      <tr>
+        <td>Rate</td>
+        <td>RATE003</td>
+        <td>your rating and review already exist for this show</td>
+      </tr>
+      
+     
+
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:8080/
+paths:
+  /api/admin/{admin_id}:
+    description: End point to read user resource
+    get:
+      description: Operation to Read user resource.
+      parameters:
+        - in: path
+          name: admin_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: course object
+                type: object
+                properties:
+                  admin_id:
+                    type: integer
+                    example: 1
+                  admin_name:
+                    type: string
+                    example: Arunrajan
+                  mobile:
+                    type: string
+                    example: 9849603252
+                  password:
+                    type: string
+                    example: 1234
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Admin not found
+
+    
+
+  /api/admin:
+    description: url point to create admin resource
+    post:
+      description: Operation to create the admin resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                admin_name:
+                    type: string
+                    example: Arunrajan
+                mobile:
+                    type: string
+                    example: 9849603252
+                password:
+                    type: string
+                    example: 1234
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  admin_id:
+                    type: integer
+                    example: 1
+                  admin_name:
+                    type: string
+                    example: Arunrajan
+                  mobile:
+                    type: string
+                    example: 9849603252
+                  password:
+                    type: string
+                    example: 1234
+                  
+        '409':
+          description: Admin already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+                    
+  /api/user/{user_id}:
+    description: Url to read and update the user resource.
+    get:
+      description: Operation to read user resource
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    example: 1
+                  user_name:
+                    type: string
+                    example: Arun
+                  mobile:
+                    type: string
+                    example: 9849603252
+                  city:
+                    type: string
+                    example: Chennai
+                  password:
+                    type: string
+                    example: 1234
+        '500':
+          description: Internal server error
+        '404':
+          description: Student not found
+
+    put:
+      description: Operation to update the user resource
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                    type: string
+                    example: Arun
+                mobile:
+                    type: string
+                    example: 9849603252
+                city:
+                    type: string
+                    example: Chennai
+                password:
+                    type: string
+                    example: 1234
+      responses:
+        '201':
+          description: Successfully updated
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    example: 1
+                  user_name:
+                    type: string
+                    example: Arun
+                  mobile:
+                    type: string
+                    example: 9849603252
+                  city:
+                    type: string
+                    example: Chennai
+                  password:
+                    type: string
+                    example: 1234
+        '409':
+          description: User already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+
+    
+
+  /api/user:
+    description: Url to create user resource
+    post:
+      description: Operation to create the user resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_name:
+                    type: string
+                    example: Arun
+                mobile:
+                    type: string
+                    example: 9849603252
+                city:
+                    type: string
+                    example: Chennai
+                password:
+                    type: string
+                    example: 1234
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                    example: 1
+                  user_name:
+                    type: string
+                    example: Arun
+                  mobile:
+                    type: string
+                    example: 9849603252
+                  password:
+                    type: string
+                    example: 1234
+        '409':
+          description: User already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+
+  /api/venue/{venue_id}:
+    description: Url to read,update and delete the venue
+    get:
+      description: operation to read the venue
+      parameters:
+        - in: path
+          name: venue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    venue_id:
+                     type: integer
+                     example: 1
+                    venue_name:
+                      type: string
+                      example: PVR CINEMAS
+                    place:
+                      type: string
+                      example: chennai
+                    location:
+                      type: string
+                      example: Adayar
+                    screen:
+                      type: integer
+                      example: 3
+        '400':
+          description: Invalid Student Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: Student is not enrolled in any course
+        '500':
+          description: Internal Server Error
+
+    put:
+      description: operation to update the venue
+      parameters:
+        - in: path
+          name: venue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          
+            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                venue_name:
+                  type: string
+                  example: PVR CINEMAS
+                place:
+                  type: string
+                  example: chennai
+                location:
+                  type: string
+                  example: Adayar
+                screen:
+                  type: integer
+                  example: 3
+                  
+      responses:
+        '201':
+          description: Venue Update successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    venue_id:
+                     type: integer
+                     example: 1
+                    venue_name:
+                      type: string
+                      example: PVR CINEMAS
+                    place:
+                      type: string
+                      example: chennai
+                    location:
+                      type: string
+                      example: Adayar
+                    screen:
+                      type: integer
+                      example: 3
+        '404':
+          description: venue not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+
+  
+    delete:
+      description: operation to delete the venue
+      parameters:
+        - in: path
+          name: venue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successfully deleted
+        '400':
+          description: Invalid venue_id.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: venue not found
+        '500':
+          description: Internal Server Error
+          
+  /api/venue/create/{admin_id}:
+    description: Url to create the venue
+    post:
+      description: opertion to create the venue
+      parameters:
+      - name: admin_id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                venue_name:
+                      type: string
+                      example: PVR CINEMAS
+                place:
+                      type: string
+                      example: chennai
+                location:
+                      type: string
+                      example: Adayar
+                screen:
+                      type: integer
+                      example: 3
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                    venue_id:
+                     type: integer
+                     example: 1
+                    venue_name:
+                      type: string
+                      example: PVR CINEMAS
+                    place:
+                      type: string
+                      example: chennai
+                    location:
+                      type: string
+                      example: Adayar
+                    screen:
+                      type: integer
+                      example: 3
+        '409':
+          description: Venue already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string      
+  /api/show/{show_id}:
+    description: Url to read, update and delete the show.
+    get:
+      description: opertion to read the show details
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    show_id:
+                     type: integer
+                     example: 1
+                    showname:
+                      type: string
+                      example: bahubali
+                    ratings:
+                      type: integer
+                      example: 5
+                    timings:
+                      type: string
+                      example: 2023-04-16T1:00
+                    tags:
+                      type: string
+                      example: Action
+                    screen_number:
+                      type: integer
+                      example: 3
+                    seats:
+                      type: integer
+                      example: 300
+                    price:
+                      type: integer
+                      example: 120
+                    amount_recieved:
+                      type: integer
+                      example: 120
+        '400':
+          description: Invalid Student Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: venue not exist
+        '500':
+          description: Internal Server Error
+
+    put:
+      description: opertion to update the show
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          
+            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                showname:
+                  type: string
+                  example: bahubali
+                ratings:
+                  type: integer
+                  example: 5
+                timings:
+                  type: string
+                  example: 2023-04-16T1:00
+                tags:
+                  type: string
+                  example: Action
+                screen_number:
+                  type: integer
+                  example: 3
+                seats:
+                  type: integer
+                  example: 300
+                price:
+                  type: integer
+                  example: 120
+                
+                  
+      responses:
+        '201':
+          description: Venue Update successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    show_id:
+                     type: integer
+                     example: 1
+                    showname:
+                      type: string
+                      example: bahubali
+                    ratings:
+                      type: integer
+                      example: 5
+                    timings:
+                      type: string
+                      example: 2023-04-16T1:00
+                    tags:
+                      type: string
+                      example: Action
+                    screen_number:
+                      type: integer
+                      example: 3
+                    seats:
+                      type: integer
+                      example: 300
+                    price:
+                      type: integer
+                      example: 120
+                    amount_recieved:
+                      type: integer
+                      example: 12000
+        '404':
+          description: show not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+
+  
+    delete:
+      description: opertion to delete the show
+      parameters:
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successfully deleted
+        '400':
+          description: Invalid venue_id.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: show not found
+        '500':
+          description: Internal Server Error
+          
+  /api/show/create/{venue_id}:
+    description: Url to create the show
+    post:
+      description: Operation to create the show
+      parameters:
+      - name: venue_id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                showname:
+                  type: string
+                  example: bahubali
+                ratings:
+                  type: integer
+                  example: 5
+                timings:
+                  type: string
+                  example: 2023-04-16T1:00
+                tags:
+                  type: string
+                  example: Action
+                screen_number:
+                  type: integer
+                  example: 3
+                seats:
+                  type: integer
+                  example: 300
+                price:
+                  type: integer
+                  example: 120
+                amount_recieved:
+                  type: integer
+                  example: 0
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                    show_id:
+                     type: integer
+                     example: 1
+                    showname:
+                      type: string
+                      example: bahubali
+                    ratings:
+                      type: integer
+                      example: 5
+                    timings:
+                      type: string
+                      example: 2023-04-16T1:00
+                    tags:
+                      type: string
+                      example: Action
+                    screen_number:
+                      type: integer
+                      example: 3
+                    seats:
+                      type: integer
+                      example: 300
+                    price:
+                      type: integer
+                      example: 120
+                    amount_recieved:
+                      type: integer
+                      example: 120
+        '409':
+          description: show already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string      
+                
+  /api/showbook/{user_id}/{show_id}:
+    description: Url to read the show bookings
+    get:
+      description: Operation to read the show bookings
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  sb_id:
+                    type: integer
+                    example: 1
+                  seats_booked:
+                    type: integer
+                    example: 12
+
+                  showname:
+                    type: string
+                    example: Avengers
+                  showtime:
+                    type: integer
+                    example: 12/04/2023 12:30am
+                  venuename:
+                    type: string
+                    example: PVR
+                  venueplace:
+                    type: string
+                    example: Chennai
+                  venueloaction:
+                    type: string
+                    example: Anna nagar
+                  Total_price:
+                    type: string
+                    example: 1234
+                  bshow_id:
+                    type: integer
+                    example: 1
+                  buser_id:
+                    type: integer
+                    example: 1
+        '500':
+          description: Internal server error
+        '404':
+          description: Student not found
+
+  /api/showbook/create/{user_id}/{venue_id}/{show_id}:
+    description: Url to update the show bookings
+    post:
+      description: Operation to create the show bookings
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - in: path
+          name: venue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+          
+            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                NOS:
+                  type: integer
+                  example: 5
+                
+                
+                  
+      responses:
+        '201':
+          description: Show booking Update successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sb_id:
+                    type: integer
+                    example: 1
+                  seats_booked:
+                    type: integer
+                    example: 12
+
+                  showname:
+                    type: string
+                    example: Avengers
+                  showtime:
+                    type: integer
+                    example: 12/04/2023 12:30am
+                  venuename:
+                    type: string
+                    example: PVR
+                  venueplace:
+                    type: string
+                    example: Chennai
+                  venueloaction:
+                    type: string
+                    example: Anna nagar
+                  Total_price:
+                    type: string
+                    example: 1234
+                  bshow_id:
+                    type: integer
+                    example: 1
+                  buser_id:
+                    type: integer
+                    example: 1
+        '404':
+          description: show not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+    
+
+
+  /api/rate/create/{user_id}/{show_id}:
+    description: Url to create a rating
+    post:
+      description: Operation to rate the show
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - in: path
+          name: show_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                    type: integer
+                    example: 5
+                review:
+                    type: string
+                    example: good
+                
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  r_id:
+                    type: integer
+                    example: 1
+                  rating:
+                    type: integer
+                    example: 12
+                  review:
+                    type: string
+                    example: good
+                  showname:
+                    type: string
+                    example: bahubali
+                  ruser_id:
+                    type: integer
+                    example: 14
+                  rshow_id:
+                    type: integer
+                    example: 1
+                  
+        '409':
+          description: Rating already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string

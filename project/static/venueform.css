@@ -1,0 +1,29 @@
+.top{
+    background-color: #333545 !important;
+    padding: 10px 10px;
+}
+
+body{
+    background-color: rgb(226, 226, 226);
+}
+
+.navbar-light.bg-light {
+    background-color: #333545 !important;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"] {
+        border: none;
+        border-bottom: 2px solid #ccc;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+}

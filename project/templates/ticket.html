@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Tickets</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .ticket {
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            border: 2px solid black;
+            padding: 10px;
+            margin: 25px;
+            display: inline-block;
+        }
+        .venue {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .show {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .seat {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .download {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin: 10px 20px;"><a href="/user/venue"><span class="bi bi-house-fill"></span></a> Ticket Booking🎫</h1>
+    {% for i in sbd %}
+        <div class="ticket">
+            <div class="venue">{{i.venuename}} - {{i.venuelocation}} - {{i.venueplace}}</div>
+            <div class="show">{{i.showname}} - {{i.showtime.strftime('%d/%m/%Y %I:%M %p')}}</div>
+            <div><p>Screen number: {{snum}}</p></div>
+            <div class="seat">Total Seats booked: {{i.seats_booked}}</div>
+            <a href="javascript:void(0)" class="btn btn-primary download" onclick="window.print()">Download</a>
+        </div>
+    {% endfor %}
+</body>
+</html>

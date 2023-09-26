@@ -1,0 +1,118 @@
+body{
+    background-color: rgb(231, 231, 231);
+}
+
+.top{
+    background-color: #333545 !important;
+}
+.topbar{
+    display: flex;
+    justify-content: space-between;
+}
+.ss{
+    display: flex;
+    justify-content: space-between;
+}
+
+#topright{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    /* background-image: url('/static/OIP\ \(1\).jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;     */
+    color: white;
+    margin-left: 10px;
+    background-color: #333545 !important;
+}
+.navbar{
+    padding-top: 0px;
+}
+.navbar-light.bg-light {
+    background-color: #333545 !important;
+}
+
+.btn-success,.venue-details{
+    margin-top: 10px;
+
+}
+.venue-box{
+    display: inline;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    
+}
+.venue-details {
+        color: white;
+        max-width: 1150px;
+        margin: 10px auto;
+        background-color: #dc3545;
+        background: linear-gradient(#dc3545, rgb(0, 0, 0));
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+.show-details {
+        color: black;
+        max-width: 400px;
+        background-color: #d1cccc;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+.show-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px;
+    margin-top: 10px;
+    }
+#add-venue{
+    margin: 50px 500px;
+
+}
+#add-show{
+    margin-top: 50px;
+}
+.edde{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    gap: 400px;
+}
+.footer {
+    background-color: #333545 !important;
+    padding: 10px 0;
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+.row1{
+    display: inline;
+}
+
+.center{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+
+}
+
+.sidebar{
+    background-color: #333545 !important;
+    padding: 20px 20px;
+}
+
+.rated{
+    margin-top: 40px;
+}

@@ -1,0 +1,119 @@
+#login{
+    background-color: aquamarine;
+    background-origin: padding-box;
+    border: none;
+}
+
+#form{
+    background-color: beige;
+    width: 500px;
+    display: flex;
+    margin: 50px 50px;
+}
+
+.venue-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  }
+
+.venue-details {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: calc(25% - 50px);
+  }
+
+.show-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  }
+
+.show-details {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: calc(50% - 20px);
+  }
+
+.show-details p {
+  margin-bottom: 5px;
+  }
+
+.show-details a {
+  display: inline-block;
+  margin-right: 5px;
+  background-color: #1A73E8;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  }
+
+.show-details a:hover {
+  background-color: #096de0;
+  }
+
+#add-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(27, 152, 235);
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  }
+
+#add-show:hover {
+  background-color: #096de0;
+  }
+
+#add-show:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(39, 105, 205, 0.4);
+  }
+
+#add-venue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(27, 152, 235);
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  }
+
+#add-venue:hover {
+  background-color: #096de0;
+  }
+
+#add-venue:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(39, 105, 205, 0.4);
+  }
+
+#button{
+  display: inline-block;
+  margin-right: 5px;
+  background-color: #1A73E8;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+  text-decoration: none;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show Booking</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: rgb(226, 226, 226);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            border: none;
+            border-bottom: 2px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .flashes {
+        padding: 10px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        }
+
+        .flashes li {
+        margin: 5px 0;
+        list-style: none;
+        }
+    </style>
+</head>
+<body>
+         
+    <h1>Book your seats</h1>
+    <form action="/user/show/book/{{v_id}}/{{seats.show_id}}" method="post">
+        <div class="form-group">
+            <label>Available seats:   <b style="color: red;">{{ seats.seats }}</b></label>
+        </div>
+        <div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-danger" id="flashes">
+                  {% for message in messages %}
+                    <p>{{ message }}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+        </div> 
+        <div class="form-group">
+            <label>Number:</label>
+            <input type="text" id="NOS" name="NOS" required />
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="text" id="price" name="price" value="{{ seats.price }}" readonly />
+        </div>
+        <div class="form-group">
+            <label>Total Price:</label>
+            <input type="text" id="Tprice" name="Tprice"  readonly />
+        </div>
+        <div>
+            <input class="btn-primary" type="submit" value="Confirm Booking"  style="display: block; margin: auto;"/>
+        </div>
+    </form>
+    
+    <script>
+      document.getElementById('NOS').addEventListener('input', function() {
+          var NOS = document.getElementById('NOS').value;
+          var price = document.getElementById('price').value;
+          var Tprice = NOS * price;
+          document.getElementById('Tprice').value = Tprice;
+      });
+    </script>
+</body>
+</html>

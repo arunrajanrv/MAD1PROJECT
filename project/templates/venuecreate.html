@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Creation</title>
+    <link rel="stylesheet" href="/static/venuecreate.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+</head>
+<body>
+    <div class="top">
+        <div class="header">
+            <h1>Ticket Booking🎫</h1>
+        </div>
+        <div class="topbar">
+            <h4 style="color: white; margin-left: 10px;">Admin Dashboard</h3>
+            <div id="topright">
+                <div><a class="nav-link" href="/summary/{{id}}" style="color: white;">Summary</a> </div>
+                <div><a class="nav-link" href="/admin" style="color: white;">Logout</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="venue-box">
+                    {% for i in ven %}
+                    <div class="venue-details">
+                        <h3 class="venue-name">{{ i.venue_name }}🍿👀🎞</h3><h6><span>{{i.location}}, </span>{{i.place}}</h6>
+                        {% if ven[i]==[] %}
+                        <div>
+                            <h5>NO show created</h5>
+                            <a class="btn btn-success" href='/admin/show/{{id}}/{{i.venue_id}}'>Add Show</a>
+                        </div>
+                        {% endif %}
+                        {% if ven[i]!=[] %}
+                        <div class="show-box">
+                            {% for j in ven[i] %}
+                            <div class="show-details">
+                                <h5>{{j.show_name}}🎞️</h5>
+                                <p>{{ j.timing.strftime('%d/%m/%Y %I:%M %p') }}</p>
+                                <p>Screen No: {{ j.screenNumber }}</p>
+                                <a href='/admin/show/{{id}}/update/{{ j.show_id }}'>Edit</a>
+                                <a href='/admin/show/{{id}}/delete/{{ j.show_id }}'>Delete</a>
+                            </div>
+                            {% endfor %}
+                            <div id="add-show">
+                                <a class="btn btn-success" href='/admin/show/{{id}}/{{i.venue_id}}'>Add Show</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="edde">
+                            <a class="btn btn-primary" href='/admin/venue/{{id}}/update/{{ i.venue_id }}' style="margin-top: 10px;">Edit</a>
+                            <a class="btn btn-danger" href='/admin/venue/{{id}}/delete/{{ i.venue_id }}' style="margin-top: 10px;">Delete</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div id="add-venue">
+                        <a class="btn btn-success av" href='/admin/venue/create/{{id}}'>Add Venue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h4 style="color: white;">Contact Us</h4>
+        <p style="color: white;">For support, please email: <span style="color: rgb(0, 162, 255);">ticketbooking@yahoo.com</span></p>
+        <p style="color: white;">&copy; 2023 TicketBooking App. All rights reserved.</p>
+    </div>     
+</body>
+</html>

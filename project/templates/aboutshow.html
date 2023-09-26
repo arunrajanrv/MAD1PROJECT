@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Show</title>
+    <link rel="stylesheet" href="/static/venuebook.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .details{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .body1{
+            margin: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="header">
+            <h1>Ticket Booking🎫</h1>
+        </div>
+        <div class="topbar">
+            <div>
+                <h4 style="color: white; margin-left: 10px;">User Dashboard</h3>
+            </div>
+            <div id="topright">
+                <div><a class="nav-link" href="/user/profile" style="color: white;">Profile</a></div>
+                <div><a class="nav-link" href="/user/bookings" style="color: white;">Bookings</a></div>
+                <div><a class="nav-link" href="/logout" style="color: white;">Logout</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="body1">
+        <h1>{{show.show_name}}</h1>
+        <div class="details">
+            <div>
+                <iframe width="560" height="315" src="{{show.trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p>{{show.movie_description}}</p>
+        </div>
+        <h5 style="margin-top: 10px;">Reviews</h5>
+        <div >
+            {% for i in rate %}
+                <div>{{i}}</idv>
+                <div style="margin-bottom: 10px;">{{rate[i].rating}}⭐, {{rate[i].review}}</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

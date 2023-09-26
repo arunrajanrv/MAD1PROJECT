@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Show Creation Form</title>
+        <!-- Add Bootstrap CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/showform.css"/>
+    </head>
+    <body>
+        <div class="top"><h4 class="header"  style="color: white;">Create a New Show</h4></div>
+        <div class="container mt-5">
+            <form action="/admin/show/{{admin_id}}/{{venue_id}}" method="post">
+                <div>
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <div class="alert alert-danger" id="flashes">
+                          {% for message in messages %}
+                            <p>{{ message }}</p>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="form-group">
+                    <label for="show_name">Show Name:</label><br>
+                    <input type="text" class="form-control-sm" id="show_name" name="show_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="show_name">Screen Number:</label><br>
+                    <input type="text" class="form-control-sm" id="screen" name="screen" required>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating:</label><br>
+                    <input type="text" class="form-control-sm" id="rating" name="rating" required>
+                </div>
+                <div class="form-group">
+                    <label for="timing">Show Time:</label><br>
+                    <input type="datetime-local" class="form-control-sm" id="timing" name="timing" required>
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags:</label><br>
+                    <input type="text" class="form-control-sm" id="tags" name="tags" required>
+                </div>
+                <div class="form-group">
+                    <label for="Trailer">Trailer link:</label><br>
+                    <input type="text" class="form-control-sm" id="trailer" name="trailer" >
+                </div>
+                <div class="form-group">
+                    <label for="Movie description">Movie description:</label><br>
+                    <input type="text" class="form-control-sm" id="md" name="movie description">
+                </div>
+                <div class="form-group">
+                    <label for="price">Seats:</label><br>
+                    <input type="text" class="form-control-sm" id="seats" name="seats" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label><br>
+                    <input type="text" class="form-control-sm" id="price" name="price" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="display: block; margin: auto;">Save</button>
+            </form>
+        </div>
+    </body>    
+</html>

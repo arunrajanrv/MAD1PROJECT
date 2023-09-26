@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Creation Form</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/venueform.css"/>
+</head>
+<body>
+    <div class="top"><h4 class="header"  style="color: white;">Create a New Venue</h4></div>
+    <div class="container mt-4">
+        <form action="/admin/venue/create/{{id}}" method="post">
+            <div class="form-group">
+                <label for="venue_name">Venue Name:</label><br>
+                <input type="text" class="form-control" id="venue_name" name="venue_name" required>
+            </div>
+            <div class="form-group">
+                <label for="place">Place:</label><br>
+                <input type="text" class="form-control" id="place" name="place" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label><br>
+                <input type="text" class="form-control" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Total Number of Screens:</label><br>
+                <input type="text" class="form-control" id="screen" name="screen" required>
+            </div>
+            <button type="submit" class="btn btn-success" style="display: block; margin: auto;">Save</button>  
+        </form> 
+    </div>
+</body>
+</html>

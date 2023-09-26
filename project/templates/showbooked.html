@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Booked</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/showbooked.css" />
+</head>
+<body>
+    <div class="top">
+        <div class="topbar">
+            <div>
+                <h4 style="color: white; margin-left: 10px;">User Bookings</h3>
+            </div>
+            <div id="topright">
+                <div><a  href="/user/venue" style="color: white;">Home</a></div>
+                <div><a  href="/user/profile" style="color: white;">Profile</a></div>
+                <div><a href="/logout" style="color: white;">Logout</a></div>
+            </div>
+        </div>
+    </div>
+        <div class="row1">
+            <div class="venue-box">
+                {% for i in ven %}
+                <div class="venue-details">
+                    <h3 class="venue-name">{{ i.venue_name }}</h3><h6><span>{{i.location}}, </span>{{i.place}}</h6>
+                    {% if not ven[i] %}
+                    <div>
+                        <h5>NO show Available!!</h5>
+                    </div>
+                    {% endif %}
+                    {% if ven[i] %}
+                    <div class="show-box">
+                        {% for j in ven[i] %}
+                            <div class="show-details">
+                                <h5>{{j.show_name}}</h5>
+                                <p>{{ j.timing.strftime('%d/%m/%Y %I:%M %p') }}</p>
+                                <a href="/user/ticket/{{j.show_id}}">Download Ticket</a><br>
+                                {% if rate[j.show_name] == 0 %}
+                                    <a href='/user/show/rate/{{ j.show_id }}'>Rate the show</a>
+                                {% else %}
+                                    <h6>Already Rated!</h6>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h4 style="color: white;">Contact Us</h4>
+        <p style="color: white;">For support, please email: <span style="color: rgb(0, 162, 255);">ticketbooking@yahoo.com</span></p>
+        <p style="color: white;">&copy; 2023 TicketBooking App. All rights reserved.</p>
+    </div>
+</body>
+</html>
